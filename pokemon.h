@@ -1,7 +1,7 @@
-#include<string>
-#include<iostream>
-#include<cstdlib>
-
+#include <string>
+#include <iostream>
+#include <cstdlib>
+#include "movimiento.h"
 
 
 class Pokemon{
@@ -13,22 +13,54 @@ private:
   int defensa;
   int vida;
   int velocidad;
+  Movimiento
 
 
 
 
 public:
-  Pokemon(std::string nom, std::string ti1, std::string ti2, int at, int def, int hp, int vel): nombre(nom), tipo1(ti1), tipo2(ti2), ataque(at), defensa(def), vida(hp), velocidad(vel){};
+  Pokemon(std::string nom, std::string ti1, std::string ti2, int hp, int at, int def, int vel): nombre(nom), tipo1(ti1), tipo2(ti2), vida(hp), ataque(at), defensa(def), velocidad(vel){};
 
+  std::string get_nom();
   int get_hp();
+  int get_at();
+  int get_def();
+  int get_speed();
+  std::string get_tipo1();
+  std::string get_tipo2();
+
   void set_hp(int, int, int, float, float, float); //(int at, int def, int hp, int pot)
 
 
 
 };
 
+std::string Pokemon::get_nom(){
+  return nombre;
+}
+
 int Pokemon::get_hp(){
   return vida;
+}
+
+int Pokemon::get_at(){
+  return ataque;
+}
+
+int Pokemon::get_def(){
+  return defensa;
+}
+
+int Pokemon::get_speed(){
+  return velocidad;
+}
+
+std::string Pokemon::get_tipo1(){
+  return tipo1;
+}
+
+std::string Pokemon::get_tipo2(){
+  return tipo2;
 }
 
 void Pokemon::set_hp(int at, int def, int pot, float var, float efec, float bon){ //var = varianza bon = bonificacion efec = efectividad
