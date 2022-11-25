@@ -1,28 +1,31 @@
+
 #include <string>
+#include <sstream>
 
 class Movimiento{
 private:
-  std::string nombre;
-  std::string tipo;
+  std::string nombreM;
+  std::string tipoM;
   int potencia;
   int precision;
 
 
 public:
-  Movimiento(std::string nom, std::string tip, int pot, int prec): nombre(nom), tipo(tip), potencia(pot), precision(prec){};
-  std::string get_nombre();
-  std::string get_tipo();
+  Movimiento(): nombreM("a"), tipoM("o"),potencia(0),precision(0){};
+  Movimiento(std::string nom, std::string tip, int pot, int prec): nombreM(nom), tipoM(tip), potencia(pot), precision(prec){};
+  std::string get_nombreM();
+  std::string get_tipoM();
   int get_pot();
   int get_prec();
 };
 
 
-std::string Movimiento::get_nombre(){
-  return nombre;
+std::string Movimiento::get_nombreM(){
+  return nombreM;
 }
 
-std::string Movimiento::get_tipo(){
-  return tipo;
+std::string Movimiento::get_tipoM(){
+  return tipoM;
 }
 
 int Movimiento::get_pot(){
