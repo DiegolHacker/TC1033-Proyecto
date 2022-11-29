@@ -24,6 +24,7 @@ std::string Movimiento::get_nombreM(){
   return nombreM;
 }
 
+
 std::string Movimiento::get_tipoM(){
   return tipoM;
 }
