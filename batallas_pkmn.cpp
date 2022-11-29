@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "pokemon.h"
+#include <stdlib.h>
 
 void prntDatos(Pokemon poke, std::string num){
 
@@ -11,11 +12,23 @@ void prntDatos(Pokemon poke, std::string num){
   std::cout <<"\nAtaque: "<< poke.get_at();
   std::cout <<"\nDefensa: "<< poke.get_def();
   std::cout <<"\nVelocidad: "<< poke.get_speed();
-
 }
+
+void prntDatosUIEne(Pokemon poke){
+  std::system("CLS");
+  std::cout<<"                         "<<poke.get_nom()<<"\n                         HP: "<<poke.get_hp()<<"/"<<poke.get_hp_total()<<"\n\n";
+}
+
+void prntDatosUI(Pokemon poke){
+  std::cout <<"\n\n"<< poke.get_nom()<<"\nHP: "<<poke.get_hp()<<"/"<<poke.get_hp_total();
+  std::cout<<"\n\nMovimientos:\n1. "<<poke.movimientos[0].get_nombreM()<<"\n2. "<<poke.movimientos[1].get_nombreM()<<"\n3. "<<poke.movimientos[2].get_nombreM()<<"\n4. "<<poke.movimientos[3].get_nombreM();
+  std::cout<<"\n\nElige un movimiento: ";
+}
+
+
 int main(){
 
-
+  std::system("CLS");
 
   Movimiento Lanzallamas("Lanzallamas","Fuego",95,100);
   Movimiento Terremoto("Terremoto","Tierra",100,100);
@@ -38,7 +51,7 @@ int main(){
   Garchomp.set_movimiento(GarraD, 0);
   Garchomp.set_movimiento(Terremoto, 1);
   Garchomp.set_movimiento(Triturar, 2);
-  Garchomp.set_movimiento(GarraD, 3);
+  Garchomp.set_movimiento(RocaAfilada, 3);
 
   Pokemon Volcarona("Volcarona","Fuego","Bicho",85,135,105,105);
   Volcarona.set_movimiento(Zumbido, 0);
@@ -52,6 +65,12 @@ int main(){
   Lucario.set_movimiento(RocaAfilada,2);
   Lucario.set_movimiento(Terremoto,3);
 
+  Pokemon Mewtwo("Mewtwo", "Psiquico", " ",106,110,90,130);
+  Mewtwo.set_movimiento(Psiquico,0);
+  Mewtwo.set_movimiento(ABocajarro,1);
+  Mewtwo.set_movimiento(Terremoto,2);
+  Mewtwo.set_movimiento(Lanzallamas,3);
+
   std::cout << "Bienvenido a esta batalla Pokemon, elige un Pokemon para comenzar:\n";
 
   prntDatos(Charizard,"1");
@@ -60,9 +79,46 @@ int main(){
   prntDatos(Lucario,"4");
 
   int seleccion;
-  std::cout<<"\n\nIngresa el numero del Pokemon de tu seleccion: ";
-  std::cin >> seleccion;
+  bool valido = false;
+  while (valido == false){
+    std::cout<<"\n\nIngresa el numero del Pokemon de tu seleccion: ";
+    std::cin >> seleccion;
 
+    if (seleccion == 1){
+      Charizard.set_seleccion(true);
+      valido = true;
+    }
+    else if (seleccion == 2){
+      Garchomp.set_seleccion(true);
+      valido = true;
+    }
+    else if (seleccion == 3){
+      Volcarona.set_seleccion(true);
+      valido = true;
+    }
+    else if (seleccion == 4){
+      Lucario.set_seleccion(true);
+      valido = true;
+    }
+    else {
+      std::cout<<"Seleccion invalida, intente de nuevo";
+    }
+  }
 
+prntDatosUIEne(Mewtwo);
+
+if (Charizard.get_selec() == true){
+  prntDatosUI(Charizard);
+
+}
+else if (Garchomp.get_selec()==true){
+  prntDatosUI(Garchomp);
+}
+else if (Volcarona.get_selec()==true){
+  prntDatosUI(Volcarona);
+}
+else if (Lucario.get_selec()==true){
+  prntDatosUI(Lucario);
+}
 
 }
